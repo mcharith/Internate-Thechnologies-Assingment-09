@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: silver;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.light {
+    width: 150px;
+    height: 50px;
+    /*background-color: white;*/
+}

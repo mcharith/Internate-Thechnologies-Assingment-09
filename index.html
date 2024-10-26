@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight Rider Light Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="light" id="light0"></div>
+    <div class="light" id="light1"></div>
+    <div class="light" id="light2"></div>
+    <div class="light" id="light3"></div>
+    <div class="light" id="light4"></div>
+    <div class="light" id="light5"></div>
+    <div class="light" id="light6"></div>
+    <div class="light" id="light7"></div>
+</div>
+<button id="start_btn">Start</button>
+<button id="stop_btn">Stop</button>
+
+<script src="../assets/lib/jquery.js"></script>
+<script>
+    const light_count = 8;
+    let current_light = -1;
+    let direction = "RIGHT";
+    intervalId = null;
+
+    updateLight = () => {
+        if (direction==="RIGHT"){
+            current_light++;
+            $(".light").css("background","white");
+            $(".light").eq(current_light).css("background","red");
+            $(".light").eq(current_light-1).css("background","darkblue");
+
+            if (current_light===light_count-1){
+                direction="LEFT";
+            }
+        }else {
+            current_light--;
+            $(".light").css("background","white");
+            $(".light").eq(current_light).css("background","red");
+            $(".light").eq(current_light+1).css("background","green");
+
+            if (current_light===0){
+                direction="RIGHT";
+            }
+        }
+    }
+    setInterval(updateLight,100);
+
+    $("#start_btn").on('click',function (){
+        intervalId = setInterval(updateLight,100);
+    });
+
+    $("#stop_btn").on('click',function (){
+        clearInterval(intervalId);
+    })
+
+</script>
+</body>
+</html>
